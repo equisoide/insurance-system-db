@@ -67,5 +67,6 @@
     <Build Include="dbo\Tables\PolicyStatus.sql" />
     <Build Include="dbo\Tables\Client.sql" />
     <Build Include="dbo\Tables\Policy.sql" />
+    <Build Include="dbo\Tables\PolicyCoverage.sql" />
   </ItemGroup>
 </Project>
