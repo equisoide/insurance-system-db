@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[Client]
+(
+	[ClientId] INT NOT NULL,
+	[Document] NVARCHAR(50) NOT NULL,
+    [Name] NVARCHAR(50) NOT NULL,
+    [Email] NVARCHAR(250) NOT NULL,
+    [CellPhone] NVARCHAR(250) NOT NULL,
+    [BirthDate] DATETIME NOT NULL,
+	CONSTRAINT [PK_Client] PRIMARY KEY CLUSTERED ([ClientId] ASC)
+);
