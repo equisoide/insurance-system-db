@@ -8,5 +8,5 @@
     [BirthDate] DATETIME NOT NULL,
 
 	CONSTRAINT [PK_Client] PRIMARY KEY CLUSTERED ([ClientId] ASC),
-    CONSTRAINT [UK_Client_Document] UNIQUE NONCLUSTERED ([Document] ASC)
+    CONSTRAINT [UK_Client_Document] UNIQUE ([Document] ASC)
 );

@@ -4,5 +4,5 @@
 	[Description] NVARCHAR(50) NOT NULL,
 
 	CONSTRAINT [PK_Coverage] PRIMARY KEY CLUSTERED ([CoverageId] ASC),
-	CONSTRAINT [UK_Coverage_Description] UNIQUE NONCLUSTERED ([Description] ASC)
+	CONSTRAINT [UK_Coverage_Description] UNIQUE ([Description] ASC)
 );
