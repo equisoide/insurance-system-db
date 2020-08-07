@@ -10,14 +10,47 @@ BEGIN TRY
 		INSERT INTO [dbo].[Coverage]([CoverageId], [Description]) VALUES (4, 'Theft');
 
 		-- Risk
-		INSERT INTO [dbo].[Risk]([RisId], [Description]) VALUES (1, 'Low');
-		INSERT INTO [dbo].[Risk]([RisId], [Description]) VALUES (2, 'Medium');
-		INSERT INTO [dbo].[Risk]([RisId], [Description]) VALUES (3, 'Medium-High');
-		INSERT INTO [dbo].[Risk]([RisId], [Description]) VALUES (4, 'High');
+		INSERT INTO [dbo].[Risk]([RiskId], [Description]) VALUES (1, 'Low');
+		INSERT INTO [dbo].[Risk]([RiskId], [Description]) VALUES (2, 'Medium');
+		INSERT INTO [dbo].[Risk]([RiskId], [Description]) VALUES (3, 'Medium-High');
+		INSERT INTO [dbo].[Risk]([RiskId], [Description]) VALUES (4, 'High');
 
 		-- PolicyStatus
 		INSERT INTO [dbo].[PolicyStatus]([PolicyStatusId], [Description]) VALUES (1, 'Active');
-		INSERT INTO [dbo].[PolicyStatus]([PolicyStatusId], [Description]) VALUES (2, 'Cancelled');
+		INSERT INTO [dbo].[PolicyStatus]([PolicyStatusId], [Description]) VALUES (2, 'Expired');
+		INSERT INTO [dbo].[PolicyStatus]([PolicyStatusId], [Description]) VALUES (3, 'Cancelled');
+
+		-- Policy
+		INSERT INTO [dbo].[Policy]([RiskId], [Name], [Description], [Periods], [Price]) VALUES (1, 'All Low 12 Vip', 'All covered 100%, low risk, 1 year', 12, 700);
+		INSERT INTO [dbo].[Policy]([RiskId], [Name], [Description], [Periods], [Price]) VALUES (1, 'All Low 6 Vip', 'All covered 100%, low risk, 6 months', 6, 300);
+		INSERT INTO [dbo].[Policy]([RiskId], [Name], [Description], [Periods], [Price]) VALUES (4, 'All High 12 50%', 'All covered 50%, high risk, 1 year', 12, 1000);
+		INSERT INTO [dbo].[Policy]([RiskId], [Name], [Description], [Periods], [Price]) VALUES (4, 'All High 6 40%', 'All covered 40%, high risk, 6 months', 6, 600);
+		
+		-- PolicyCoverage
+		DECLARE @AllLow12Id INT; SELECT @AllLow12Id = [PolicyId] FROM [dbo].[Policy] WHERE [Name] = 'All Low 12 Vip';
+		DECLARE @AllLow6Id INT; SELECT @AllLow6Id = [PolicyId] FROM [dbo].[Policy] WHERE [Name] = 'All Low 6 Vip';
+		DECLARE @AllHigh12Id INT; SELECT @AllHigh12Id = [PolicyId] FROM [dbo].[Policy] WHERE [Name] = 'All High 12 50%';
+		DECLARE @AllHigh6Id INT; SELECT @AllHigh6Id = [PolicyId] FROM [dbo].[Policy] WHERE [Name] = 'All High 6 40%';
+
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllLow12Id, 1, 100);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllLow12Id, 2, 100);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllLow12Id, 3, 100);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllLow12Id, 4, 100);
+
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllLow6Id, 1, 100);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllLow6Id, 2, 100);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllLow6Id, 3, 100);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllLow6Id, 4, 100);
+
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllHigh12Id, 1, 50);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllHigh12Id, 2, 50);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllHigh12Id, 3, 50);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllHigh12Id, 4, 50);
+
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllHigh6Id, 1, 40);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllHigh6Id, 2, 40);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllHigh6Id, 3, 40);
+		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@AllHigh6Id, 4, 40);
 
 		-- Client
 		INSERT INTO [dbo].[Client]([Document], [Name], [Email], [CellPhone], [BirthDate]) VALUES ('00001', 'Eric Cartman', 'cartman@southpark.com', '300-000-0001', '1992-01-01');
@@ -25,27 +58,15 @@ BEGIN TRY
 		INSERT INTO [dbo].[Client]([Document], [Name], [Email], [CellPhone], [BirthDate]) VALUES ('00003', 'Butters Stotch', 'butters@southpark.com', '300-000-0003', '1990-01-01');
 		INSERT INTO [dbo].[Client]([Document], [Name], [Email], [CellPhone], [BirthDate]) VALUES ('00004', 'Mr. Garrison', 'garrison@southpark.com', '300-000-0004', '1970-01-01');
 
+		-- Client Policy
 		DECLARE @CartamnId INT;
 		SELECT @CartamnId = [ClientId] FROM [dbo].[Client] WHERE [Document] = '00001';
 		DECLARE @RandyId INT;
 		SELECT @RandyId = [ClientId] FROM [dbo].[Client] WHERE [Document] = '00002';
 
-		-- Policy
-		INSERT INTO [dbo].[Policy]([ClientId], [RiskId], [PolicyStatusId], [Name], [Description], [StartDate], [Periods], [Price]) VALUES (@CartamnId, 2, 1, 'The coon', 'All risk policy for his superhero character', '2020-08-07', 12, 2500);
-		INSERT INTO [dbo].[Policy]([ClientId], [RiskId], [PolicyStatusId], [Name], [Description], [StartDate], [Periods], [Price]) VALUES (@RandyId, 4, 2, 'Policeman', 'All risk policy for his policeman character', '2020-08-07', 6, 5000);
-    
-		DECLARE @CartamnPolicyId INT;
-		SELECT @CartamnPolicyId = [PolicyId] FROM [dbo].[Policy] WHERE [ClientId] = @CartamnId;
-		DECLARE @RandyPolicyId INT;
-		SELECT @RandyPolicyId = [PolicyId] FROM [dbo].[Policy] WHERE [ClientId] = @RandyId;
-
-		-- PolicyCoverage
-		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@CartamnPolicyId, 2, 90);
-		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@CartamnPolicyId, 3, 70);
-		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@CartamnPolicyId, 4, 85);
-
-		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@RandyPolicyId, 1, 40);
-		INSERT INTO [dbo].[PolicyCoverage]([PolicyId], [CoverageId], [Percentage]) VALUES (@RandyPolicyId, 2, 35);
+		INSERT INTO [dbo].[ClientPolicy]([ClientId], [PolicyId], [PolicyStatusId], [StartDate]) VALUES (@CartamnId, @AllLow12Id, 2, '2019-01-01');
+		INSERT INTO [dbo].[ClientPolicy]([ClientId], [PolicyId], [PolicyStatusId], [StartDate]) VALUES (@CartamnId, @AllLow12Id, 1, '2020-01-01');
+		INSERT INTO [dbo].[ClientPolicy]([ClientId], [PolicyId], [PolicyStatusId], [StartDate]) VALUES (@RandyId, @AllHigh6Id, 1, '2020-06-01');
 
     COMMIT TRAN
 END TRY

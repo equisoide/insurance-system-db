@@ -69,6 +69,7 @@
     <Build Include="dbo\Tables\Coverage.sql" />
     <Build Include="dbo\Tables\PolicyStatus.sql" />
     <Build Include="dbo\Tables\Risk.sql" />
+    <Build Include="dbo\Tables\ClientPolicy.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Init.sql" />
