@@ -63,5 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Coverage.sql" />
+    <Build Include="dbo\Tables\Risk.sql" />
   </ItemGroup>
 </Project>
