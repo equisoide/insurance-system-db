@@ -66,5 +66,6 @@
     <Build Include="dbo\Tables\Risk.sql" />
     <Build Include="dbo\Tables\PolicyStatus.sql" />
     <Build Include="dbo\Tables\Client.sql" />
+    <Build Include="dbo\Tables\Policy.sql" />
   </ItemGroup>
 </Project>
