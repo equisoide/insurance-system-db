@@ -1,0 +1,27 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Gap.Insurance.Database", "Gap.Insurance.Database\Gap.Insurance.Database.sqlproj", "{C12FD8D0-5259-48DB-A823-3211D369703E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C12FD8D0-5259-48DB-A823-3211D369703E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C12FD8D0-5259-48DB-A823-3211D369703E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C12FD8D0-5259-48DB-A823-3211D369703E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C12FD8D0-5259-48DB-A823-3211D369703E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C12FD8D0-5259-48DB-A823-3211D369703E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C12FD8D0-5259-48DB-A823-3211D369703E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EA5C8AA-AF95-48EE-82E7-C16F7A09A8CD}
+	EndGlobalSection
+EndGlobal
