@@ -8,7 +8,7 @@
 	[Description] NVARCHAR(250) NOT NULL,
 	[StartDate] DATETIME NOT NULL,
 	[Periods] INT NOT NULL,
-	[Price] DECIMAL(18,4) NOT NULL,
+	[Price] DECIMAL(18,2) NOT NULL,
 
 	CONSTRAINT [PK_Policy] PRIMARY KEY CLUSTERED ([PolicyId] ASC),
 	CONSTRAINT [FK_Policy_Client] FOREIGN KEY ([ClientId]) REFERENCES [dbo].[Client] ([ClientId]),
