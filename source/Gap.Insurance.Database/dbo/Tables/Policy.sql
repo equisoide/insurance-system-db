@@ -10,5 +10,5 @@
 	CONSTRAINT [PK_Policy] PRIMARY KEY CLUSTERED ([PolicyId] ASC),
 	CONSTRAINT [FK_Policy_Risk] FOREIGN KEY([RiskId]) REFERENCES [dbo].[Risk] ([RiskId]),
 	CONSTRAINT [UK_Policy_Name] UNIQUE ([Name] ASC),
-	CONSTRAINT [CK_Policy_Periods] CHECK ([Periods] > (0))
+	CONSTRAINT [CK_Policy_Periods] CHECK ([Periods] > 0)
 );
