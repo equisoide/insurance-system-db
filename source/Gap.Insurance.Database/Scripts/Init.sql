@@ -10,10 +10,10 @@ BEGIN TRY
 		INSERT INTO [dbo].[Coverage]([CoverageId], [Description]) VALUES (4, 'Theft');
 
 		-- Risk
-		INSERT INTO [dbo].[Risk]([RiskId], [Description]) VALUES (1, 'Low');
-		INSERT INTO [dbo].[Risk]([RiskId], [Description]) VALUES (2, 'Medium');
-		INSERT INTO [dbo].[Risk]([RiskId], [Description]) VALUES (3, 'Medium-High');
-		INSERT INTO [dbo].[Risk]([RiskId], [Description]) VALUES (4, 'High');
+		INSERT INTO [dbo].[Risk]([RiskId], [Description], [MaxCoverage]) VALUES (1, 'Low', 100);
+		INSERT INTO [dbo].[Risk]([RiskId], [Description], [MaxCoverage]) VALUES (2, 'Medium', 100);
+		INSERT INTO [dbo].[Risk]([RiskId], [Description], [MaxCoverage]) VALUES (3, 'Medium-High', 100);
+		INSERT INTO [dbo].[Risk]([RiskId], [Description], [MaxCoverage]) VALUES (4, 'High', 50);
 
 		-- PolicyStatus
 		INSERT INTO [dbo].[PolicyStatus]([PolicyStatusId], [Description]) VALUES (1, 'Active');
