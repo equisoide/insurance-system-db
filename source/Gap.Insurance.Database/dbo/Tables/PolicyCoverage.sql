@@ -7,7 +7,7 @@
 
 	CONSTRAINT [PK_PolicyCoverage] PRIMARY KEY CLUSTERED ([PolicyCoverageId] ASC),
 	CONSTRAINT [FK_PolicyCoverage_Coverage] FOREIGN KEY([CoverageId]) REFERENCES [dbo].[Coverage] ([CoverageId]),
-	CONSTRAINT [FK_PolicyCoverage_Policy] FOREIGN KEY([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId]),
+	CONSTRAINT [FK_PolicyCoverage_Policy] FOREIGN KEY([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId]) ON DELETE CASCADE,
 	CONSTRAINT [UK_PolicyCoverage] UNIQUE ([PolicyId] ASC, [CoverageId] ASC),
 	CONSTRAINT [CK_PolicyCoverage_Percentage] CHECK  ([Percentage] > 0 AND [Percentage] <= 100)
 );
